@@ -1,2 +1,2 @@
-﻿# schemas package
+# schemas package
 

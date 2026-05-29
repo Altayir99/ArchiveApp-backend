@@ -1,5 +1,3 @@
-﻿version: "3.9"
-
 # ISOLATED from Facturo - separate network, containers, and volumes
 services:
   docuagent-db:

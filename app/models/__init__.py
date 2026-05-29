@@ -1,2 +1,2 @@
-﻿# models package
+# models package
 

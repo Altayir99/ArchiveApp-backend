@@ -1,4 +1,4 @@
-﻿import uuid
+import uuid
 from pydantic import BaseModel
 
 from app.schemas.document import DocumentResponse

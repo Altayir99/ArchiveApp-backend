@@ -1,2 +1,2 @@
-﻿# services package
+# services package
 

@@ -1,4 +1,4 @@
-﻿import uuid
+import uuid
 
 from sqlalchemy import select, func, desc, text, cast, String
 from sqlalchemy.ext.asyncio import AsyncSession

@@ -1,4 +1,4 @@
-﻿# DocuAgent AI Backend
+# DocuAgent AI Backend
 
 FastAPI Backend fuer DocuAgent AI.
 
