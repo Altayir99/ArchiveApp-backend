@@ -1,9 +1,9 @@
-""initial schema
+"""initial schema
 
 Revision ID: 001
 Revises:
 Create Date: 2026-05-28
-""
+"""
 
 from typing import Sequence, Union
 from alembic import op
@@ -55,7 +55,7 @@ def upgrade() -> None:
 
     op.create_index('idx_documents_search', 'documents', ['search_vector'], postgresql_using='gin')
 
-    op.execute('''
+    op.execute("""
         CREATE OR REPLACE FUNCTION update_search_vector()
         RETURNS TRIGGER AS $$
         BEGIN
@@ -66,14 +66,14 @@ def upgrade() -> None:
             RETURN NEW;
         END;
         $$ LANGUAGE plpgsql;
-    ''')
+    """)
 
-    op.execute('''
+    op.execute("""
         CREATE TRIGGER trg_update_search_vector
         BEFORE INSERT OR UPDATE ON documents
         FOR EACH ROW
         EXECUTE FUNCTION update_search_vector();
-    ''')
+    """)
 
 
 def downgrade() -> None:
