@@ -1,0 +1,38 @@
+﻿version: "3.9"
+
+# ISOLATED from Facturo - separate network, containers, and volumes
+services:
+  docuagent-db:
+    image: postgres:16-alpine
+    container_name: docuagent-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: docuagent
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-docuagent_secure_pw}
+      POSTGRES_DB: docuagent_db
+    volumes:
+      - docuagent_postgres_data:/var/lib/postgresql/data
+    networks:
+      - docuagent-network
+
+  docuagent-api:
+    build: .
+    container_name: docuagent-api
+    restart: unless-stopped
+    ports:
+      - "8001:8000"
+    env_file: .env
+    volumes:
+      - ./uploads:/app/uploads
+    depends_on:
+      - docuagent-db
+    networks:
+      - docuagent-network
+
+volumes:
+  docuagent_postgres_data:
+    name: docuagent_postgres_data
+
+networks:
+  docuagent-network:
+    name: docuagent-network
