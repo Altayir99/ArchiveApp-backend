@@ -33,6 +33,9 @@ class Document(Base):
         DateTime, server_default=func.now(), onupdate=func.now()
     )
     search_vector = mapped_column(TSVECTOR, nullable=True)
+    drive_file_id: Mapped[str | None] = mapped_column(
+        String(255), unique=True, nullable=True, index=True
+    )
 
     workspace = relationship("Workspace", back_populates="documents")
 

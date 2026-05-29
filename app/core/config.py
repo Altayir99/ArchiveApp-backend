@@ -12,6 +12,12 @@ class Settings(BaseSettings):
     MAX_UPLOAD_SIZE_MB: int = 50
     CORS_ORIGINS: str = '["http://localhost:3000"]'
 
+    # Google Drive
+    GOOGLE_SERVICE_ACCOUNT_FILE: str = ""
+    DRIVE_INBOX_FOLDER_ID: str = ""
+    DRIVE_SYNC_INTERVAL_MINUTES: int = 5
+    DRIVE_DEFAULT_WORKSPACE_NAME: str = "Posteingang"
+
     @property
     def cors_origins_list(self) -> list[str]:
         return json.loads(self.CORS_ORIGINS)
